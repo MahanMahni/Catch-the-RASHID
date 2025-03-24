@@ -14,3 +14,6 @@ COPY . .
 RUN pip install -r requirements.txt
 
 CMD ["python", "game.py"]
+
+# sound disable
+ENV SDL_AUDIODRIVER dummy
