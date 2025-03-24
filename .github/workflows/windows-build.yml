@@ -10,6 +10,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Verify Files
+        run: |
+          dir
+          if not exist assets echo "⚠️ Warning: 'assets' folder not found!"
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
