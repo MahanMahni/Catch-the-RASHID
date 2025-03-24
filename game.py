@@ -66,7 +66,8 @@ TITLE3_RECT.center = (500, 350)
 
 # sounds
 pygame.mixer.init()
-start_effect = pygame.mixer.Sound('Jump-SoundBible.com-1007297584.wav')
+sound_path = os.path.join("assets", "Jump-SoundBible.com-1007297584.wav")
+start_effect = pygame.mixer.Sound(sound_path)
 
 # start loop
 while start_run:
@@ -157,11 +158,14 @@ background_rect.bottom = WINDOW_WIDTH
 background_rect.centerx = WINDOW_HEIGHT // 2
 
 # sounds and music
-click_sound = pygame.mixer.Sound('click_sound.wav')
+sound_path = os.path.join("assets", 'click_sound.wav')
+click_sound = pygame.mixer.Sound(sound_path)
 click_sound.set_volume(0.3)
-miss_sound = pygame.mixer.Sound('miss_sound.wav')
+sound_path = os.path.join("assets", 'miss_sound.wav')
+miss_sound = pygame.mixer.Sound(sound_path)
 miss_sound.set_volume(0.3)
-pygame.mixer.music.load('ctc_background_music.wav')
+background_sound_path = os.path.join("assets", 'ctc_background_music.wav')
+pygame.mixer.music.load(background_sound_path)
 
 # play music
 pygame.mixer.music.play(-1, 0.0)
