@@ -75,7 +75,7 @@ while start_run:
             mouse_y = event_.pos[1]
             if 320 < mouse_x < 680 and mouse_y > 320 and mouse_y > 480:
                 radius = 0
-                start_effect.play()
+                #start_effect.play()
                 while True:
                     next_page = pygame.draw.circle(surface, BLACK, (500, 400), radius)
                     radius += 10
