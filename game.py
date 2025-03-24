@@ -1,5 +1,15 @@
 import pygame
 import random
+import os
+import sys
+
+
+# Get the correct path for assets in a PyInstaller `.exe`
+def resource_path(relative_path):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.getcwd(), relative_path)
+
 
 pygame.init()
 
@@ -32,14 +42,15 @@ surface.fill(PINK)
 rect = (pygame.draw.rect(surface, BLACK, (320, 480, 360, 180), 10))
 
 # set start fonts
-START_FONT = pygame.font.Font('Gumdrop-ALJ72.ttf', 100)
+font_path = resource_path("Gumdrop-ALJ72.ttf")
+START_FONT = pygame.font.Font(font_path, 100)
 START = START_FONT.render('START', True, WHITE)
 START_RECT = START.get_rect()
 START_RECT.center = rect.center
 
-TITLE1_FONT = pygame.font.Font('Gumdrop-ALJ72.ttf', 60)
-TITLE2_FONT = pygame.font.Font('Gumdrop-ALJ72.ttf', 300)
-TITLE3_FONT = pygame.font.Font('Gumdrop-ALJ72.ttf', 20)
+TITLE1_FONT = pygame.font.Font(font_path, 60)
+TITLE2_FONT = pygame.font.Font(font_path, 300)
+TITLE3_FONT = pygame.font.Font(font_path, 20)
 
 TITLE1 = TITLE1_FONT.render('catch the', True, WHITE)
 TITLE2 = TITLE2_FONT.render('clown', True, WHITE)
