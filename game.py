@@ -103,7 +103,10 @@ while start_run:
 # main game
 
 # set images
-target = pygame.image.load('Rashid2.png')
+# Get the correct path when running from a PyInstaller bundle
+base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+image_path = os.path.join(base_path, "assets", "Rashid2.png")
+target = pygame.image.load(image_path)
 target_rect = target.get_rect()
 target_rect.centerx = WINDOW_HEIGHT // 2
 target_rect.centery = WINDOW_WIDTH // 2
