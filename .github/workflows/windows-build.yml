@@ -3,41 +3,38 @@ name: Build Windows Executable
 on:
   push:
     branches:
-      - main  # Runs on every push to main branch
-  workflow_dispatch:  # Allows manual trigger
+      - main  # Runs when pushing to the "main" branch
+  workflow_dispatch:  # Allows manual runs
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Use a Windows runner
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v3  # Fetches your code
 
-      - name: Setup Python
+      - name: 🐍 Set Up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"  # Use the same Python version as your local dev
+          python-version: "3.9"  # Compatible Python version
 
-      - name: Install Dependencies
+      - name: 📦 Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pygame pyinstaller
 
-      - name: Check if Assets Exist
-        shell: pwsh
+      - name: 🔍 Check if 'assets' Directory Exists
         run: |
-          if (-Not (Test-Path "assets")) { 
-            Write-Host "⚠️ Warning: 'assets' folder not found!"
-            exit 1 
-          }
+          if (!(Test-Path "assets")) { echo "⚠️ Warning: 'assets' folder not found!"; exit 1 }
+        shell: pwsh  # Use PowerShell since `if` syntax is different in Windows
 
-      - name: Build Game with PyInstaller
+      - name: 🚀 Build Executable with PyInstaller
         run: |
           pyinstaller --onefile --windowed --noconsole --name="MyGame" --hidden-import pygame --add-data "Gumdrop-ALJ72.ttf;." --add-data "assets;assets" game.py
 
-      - name: Upload Executable as Artifact
-        uses: actions/upload-artifact@v3
+      - name: 📤 Upload Executable as Artifact
+        uses: actions/upload-artifact@v4  # Use latest version
         with:
           name: MyGame-Windows
-          path: dist/MyGame.exe
+          path: dist/MyGame.exe  # Path to the built executable
