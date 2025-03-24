@@ -211,7 +211,7 @@ while runner:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if target_rect.collidepoint(mouse_pos):
-                click_sound.play()
+                #click_sound.play()
                 y_bug = y
                 x_bug = x
                 y = random.randint(1, 3)
@@ -227,7 +227,7 @@ while runner:
                 continue
 
             else:
-                miss_sound.play()
+                #miss_sound.play()
                 lives -= 1
 
         # game over
@@ -235,7 +235,7 @@ while runner:
             surface.blit(game_over_text, game_over_rect)
             surface.blit(continue_text, continue_rect)
             pygame.display.update()
-            pygame.mixer.music.stop()
+            #pygame.mixer.music.stop()
             pause = True
             while pause:
                 for event__ in pygame.event.get():
@@ -244,7 +244,7 @@ while runner:
                         target_velocity = TARGET_STARTING_VELOCITY
                         lives = STARTING_LIVES
                         target_rect.center = STARTING_POS
-                        pygame.mixer.music.play(-1, 0.0)
+                        #pygame.mixer.music.play(-1, 0.0)
                         pause = False
 
                     if event__.type == pygame.QUIT:
