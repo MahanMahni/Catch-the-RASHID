@@ -102,16 +102,18 @@ while start_run:
 
 # main game
 
-# set images
+# set images --------------------------------------------------------------------
+
 # Get the correct path when running from a PyInstaller bundle
 base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+
 image_path = os.path.join(base_path, "assets", "Rashid2.png")
 target = pygame.image.load(image_path)
 target_rect = target.get_rect()
 target_rect.centerx = WINDOW_HEIGHT // 2
 target_rect.centery = WINDOW_WIDTH // 2
 
-# variables
+# variables --------------------------------------------------------------------
 FPS = 60
 clock = pygame.time.Clock()
 TARGET_STARTING_VELOCITY = 3
@@ -125,8 +127,9 @@ target_velocity = TARGET_STARTING_VELOCITY
 y = random.randint(1, 3)
 x = random.randint(1, 3)
 
-# set fonts
-font = pygame.font.Font('Franxurter.ttf', 50)
+# set fonts -----------------------------------------------------------------
+font_path = resource_path('Franxurter.ttf')
+font = pygame.font.Font(font_path, 50)
 
 lives_text = font.render('lives: ' + str(lives), True, WHITE)
 lives_rect = lives_text.get_rect()
@@ -145,8 +148,9 @@ continue_rect = continue_text.get_rect()
 continue_rect.centerx = WINDOW_HEIGHT // 2
 continue_rect.top = game_over_rect.bottom
 
-# background
-background = pygame.image.load('background.png')
+# background --------------------------------------------------------------------
+background_path = os.path.join(base_path, "assets", 'background.png')
+background = pygame.image.load(background_path)
 background_rect = background.get_rect()
 background_rect.bottom = WINDOW_WIDTH
 background_rect.centerx = WINDOW_HEIGHT // 2
