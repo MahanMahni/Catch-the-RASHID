@@ -13,19 +13,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.9'  # Compatible with older Windows versions
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller
+          pip install pygame pyinstaller
 
       - name: Build Executable
         run: |
-          pyinstaller --onefile --windowed game.py
+          pyinstaller --onefile --windowed --noconsole --name="MyGame" --hidden-import pygame game.py
 
       - name: Upload Executable
         uses: actions/upload-artifact@v4
         with:
-          name: game-executable
-          path: dist/game.exe
+          name: MyGame-Windows
+          path: dist/MyGame.exe
