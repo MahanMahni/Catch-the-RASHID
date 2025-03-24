@@ -65,8 +65,8 @@ TITLE2_RECT.center = (500, 250)
 TITLE3_RECT.center = (500, 350)
 
 # sounds
-# pygame.mixer.init()
-# start_effect = pygame.mixer.Sound('Jump-SoundBible.com-1007297584.wav')
+pygame.mixer.init()
+start_effect = pygame.mixer.Sound('Jump-SoundBible.com-1007297584.wav')
 
 # start loop
 while start_run:
@@ -86,7 +86,7 @@ while start_run:
             mouse_y = event_.pos[1]
             if 320 < mouse_x < 680 and mouse_y > 320 and mouse_y > 480:
                 radius = 0
-                #start_effect.play()
+                start_effect.play()
                 while True:
                     next_page = pygame.draw.circle(surface, BLACK, (500, 400), radius)
                     radius += 10
@@ -157,14 +157,14 @@ background_rect.bottom = WINDOW_WIDTH
 background_rect.centerx = WINDOW_HEIGHT // 2
 
 # sounds and music
-# click_sound = pygame.mixer.Sound('click_sound.wav')
-# click_sound.set_volume(0.3)
-# miss_sound = pygame.mixer.Sound('miss_sound.wav')
-# miss_sound.set_volume(0.3)
-# pygame.mixer.music.load('ctc_background_music.wav')
+click_sound = pygame.mixer.Sound('click_sound.wav')
+click_sound.set_volume(0.3)
+miss_sound = pygame.mixer.Sound('miss_sound.wav')
+miss_sound.set_volume(0.3)
+pygame.mixer.music.load('ctc_background_music.wav')
 
 # play music
-# pygame.mixer.music.play(-1, 0.0)
+pygame.mixer.music.play(-1, 0.0)
 
 # game loop
 while runner:
@@ -230,7 +230,7 @@ while runner:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if target_rect.collidepoint(mouse_pos):
-                #click_sound.play()
+                click_sound.play()
                 y_bug = y
                 x_bug = x
                 y = random.randint(1, 3)
@@ -246,7 +246,7 @@ while runner:
                 continue
 
             else:
-                #miss_sound.play()
+                miss_sound.play()
                 lives -= 1
 
         # game over
@@ -254,7 +254,7 @@ while runner:
             surface.blit(game_over_text, game_over_rect)
             surface.blit(continue_text, continue_rect)
             pygame.display.update()
-            #pygame.mixer.music.stop()
+            pygame.mixer.music.stop()
             pause = True
             while pause:
                 for event__ in pygame.event.get():
@@ -263,7 +263,7 @@ while runner:
                         target_velocity = TARGET_STARTING_VELOCITY
                         lives = STARTING_LIVES
                         target_rect.center = STARTING_POS
-                        #pygame.mixer.music.play(-1, 0.0)
+                        pygame.mixer.music.play(-1, 0.0)
                         pause = False
 
                     if event__.type == pygame.QUIT:
