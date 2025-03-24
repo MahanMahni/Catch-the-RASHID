@@ -31,7 +31,7 @@ jobs:
 
       - name: 🚀 Build Executable with PyInstaller
         run: |
-          pyinstaller --onefile --windowed --noconsole --name="MyGame" --hidden-import pygame --add-data "Gumdrop-ALJ72.ttf;." --add-data "Franxurter.ttf;." --add-data "assets;assets" game.py
+          pyinstaller --onefile --windowed --noconsole --name="MyGame" --hidden-import pygame --add-data "Gumdrop-ALJ72.ttf;." --add-data "Franxurter.ttf;." --add-data "Jump-SoundBible.com-1007297584.wav" --add-data 'click_sound.wav' --add-data 'miss_sound.wav' --add-data 'ctc_background_music.wav' --add-data "assets;assets" game.py
 
       - name: 📤 Upload Executable as Artifact
         uses: actions/upload-artifact@v4  # Use latest version
