@@ -54,6 +54,7 @@ TITLE2_RECT.center = (500, 250)
 TITLE3_RECT.center = (500, 350)
 
 # sounds
+pygame.mixer.init()
 start_effect = pygame.mixer.Sound('Jump-SoundBible.com-1007297584.wav')
 
 # start loop
