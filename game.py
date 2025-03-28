@@ -158,14 +158,12 @@ background_rect.bottom = WINDOW_WIDTH
 background_rect.centerx = WINDOW_HEIGHT // 2
 
 # sounds and music
-sound_path = os.path.join("assets", 'click_sound.wav')
-click_sound = pygame.mixer.Sound(sound_path)
+BASE_PATH = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+click_sound = pygame.mixer.Sound(os.path.join(BASE_PATH, "assets", 'click_sound.wav'))
 click_sound.set_volume(0.3)
-sound_path = os.path.join("assets", 'miss_sound.wav')
-miss_sound = pygame.mixer.Sound(sound_path)
+miss_sound = pygame.mixer.Sound(os.path.join(BASE_PATH, "assets", 'miss_sound.wav'))
 miss_sound.set_volume(0.3)
-background_sound_path = os.path.join("assets", 'ctc_background_music.wav')
-pygame.mixer.music.load(background_sound_path)
+pygame.mixer.Sound(os.path.join(BASE_PATH, "assets", 'ctc_background_music.wav'))
 
 # play music
 pygame.mixer.music.play(-1, 0.0)
