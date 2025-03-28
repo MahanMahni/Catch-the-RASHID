@@ -66,8 +66,8 @@ TITLE3_RECT.center = (500, 350)
 
 # sounds
 pygame.mixer.init()
-sound_path = os.path.join("assets", "Jump-SoundBible.com-1007297584.wav")
-start_effect = pygame.mixer.Sound(sound_path)
+BASE_PATH = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+start_effect = pygame.mixer.Sound(os.path.join(BASE_PATH, "assets", "Jump-SoundBible.com-1007297584.wav"))
 
 # start loop
 while start_run:
