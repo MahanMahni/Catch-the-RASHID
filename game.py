@@ -163,9 +163,10 @@ click_sound = pygame.mixer.Sound(os.path.join(BASE_PATH, "assets", 'click_sound.
 click_sound.set_volume(0.3)
 miss_sound = pygame.mixer.Sound(os.path.join(BASE_PATH, "assets", 'miss_sound.wav'))
 miss_sound.set_volume(0.3)
-pygame.mixer.Sound(os.path.join(BASE_PATH, "assets", 'ctc_background_music.wav'))
+background_music = pygame.mixer.Sound(os.path.join(BASE_PATH, "assets", 'ctc_background_music.wav'))
 
 # play music
+pygame.mixer.music.load(background_music)
 pygame.mixer.music.play(-1, 0.0)
 
 # game loop
